@@ -1,21 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Image, ScrollView,Dimensions } from 'react-native';
+import Header from './Header.js';
+import Body from './Body.js';
+import Bodys from './Bodys.js';
+import BottomBar from './BottomBar.js';
+import BottomAd from './BottomAd.js';
 
+const windowHeight = Dimensions.get('window').height;
 export default function App() {
+
+  
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.fragments}>
+      <Header/>
+      <ScrollView style={styles.scrollView} vertical={true} showsVerticalScrollIndicator={false} style={styles.container}>
+        <View style={styles.main}>
+          <Body/>
+          <BottomBar/>
+          <StatusBar style="auto" />
+        </View>
+      </ScrollView>
+      <BottomAd style={styles.bottomAd}/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  fragments:{
+    backgroundColor: "#007EEF",
+    paddingTop: windowHeight * 0.035,
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  scrollView:{
+    marginBottom: "5%",
+  },
+  main: {
+    flex: 1,
+    flexDirection: "column",
+  },
+  container: {
+    backgroundColor: "#007EEF",
+  },
+  bottomAd: {
+    height: "5%",
   },
 });
